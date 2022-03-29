@@ -1,0 +1,38 @@
+<%- include ('partials/header.ejs'); -%>
+
+<h1>Insertar / Editar cliente</h1>
+
+<ul>
+<% if (errors) { %>
+<% errors.forEach( function(error){  %>
+	<li><%=error.msg %></li>
+<% }) %>
+<% } %>
+
+</ul>
+
+<ul>
+<form method="POST" name="form" action="/users/add" id="form">
+	<input id="id" name="id" type="hidden" value="">
+	<label>Nombre</label>
+	<input type="text" id="nombre" name="first_name" value="">
+	<br>
+	<label>Apellido</label>
+	<input type="text" id="apellido" name="last_name" value="">
+	<br>
+	<label>Email</label>
+	<input type="text" id="email" name="email" value="">
+	<br>
+	<input type="submit" class="boton" Value="Enviar" name="submit">
+</form>
+
+</ul>
+	<h1><%=title %></h1>
+<ul>
+<% users.forEach(function(user) { %>
+		<li><%=user.first_name %> <%= user.last_name%> - <a href="#" class="deleteUser" data-id="<%= user._id %>">Delete</a> <a href="#" class="editUser" data-id="<%= user._id %>">Edit</a></li>
+<% }) %>
+</ul>
+
+
+<%- include ('partials/footer.ejs'); -%>
